@@ -58,13 +58,14 @@
       };
     },
     methods: {
-      showPwd() {
+      // 这个方法好像没用
+      /*showPwd() {
         if (this.pwdType === "password") {
           this.pwdType = "";
         } else {
           this.pwdType = "password";
         }
-      },
+      },*/
       handleLogin() {
         this.$refs.loginForm.validate(valid => {
           if (valid) {
