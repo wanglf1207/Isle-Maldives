@@ -6,12 +6,11 @@ const path = require('path')
 
 module.exports = {
   dev: {
-    // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8088',
+        target: 'http://10.211.55.133:8080',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
@@ -44,13 +43,17 @@ module.exports = {
   },
 
   build: {
+    // 20210306
+    prodEnv: require('./prod.env'),
+    testEnv: require('./test.env'),
+
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './', // 打包编译修改过
 
     /**
      * Source Maps

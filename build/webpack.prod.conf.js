@@ -11,9 +11,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : require('../config/prod.env')
+const env = process.env.ENV_CONFIG === 'prod'
+  ? config.build.prodEnv
+  : (process.env.ENV_CONFIG === 'test' ? config.build.testEnv : config.build.devEnv)
+
+// const env = require('../config/prod.env');
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -32,7 +34,10 @@ const webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
+     // 'process.env': env,
+     // Uncaught TypeError: Cannot read property 'NODE_ENV' of undefined
+      'process.env.NODE_ENV': JSON.stringify('production')
+
     }),
     new UglifyJsPlugin({
       uglifyOptions: {

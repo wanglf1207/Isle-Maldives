@@ -1,6 +1,7 @@
 'use strict'
 require('./check-versions')()
 
+//20210306注释
 process.env.NODE_ENV = 'production'
 
 const ora = require('ora')

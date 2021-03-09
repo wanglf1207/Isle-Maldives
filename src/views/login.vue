@@ -1,3 +1,26 @@
+<style scoped>
+  .login-form-layout {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 360px;
+    margin: 140px auto;
+    border-top: 10px solid #409eff;
+  }
+
+  .login-title {
+    text-align: center;
+  }
+
+  .login-center-layout {
+    background: #409eff;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 200px;
+  }
+</style>
 <template>
   <div>
     <el-card class="login-form-layout">
@@ -50,22 +73,15 @@
     data() {
       return {
         loginForm: {
-          username: "admin",
-          password: "123456"
+          username: "",
+          password: ""
         },
         loading: false,
         pwdType: "password",
       };
     },
+
     methods: {
-      // 这个方法好像没用
-      /*showPwd() {
-        if (this.pwdType === "password") {
-          this.pwdType = "";
-        } else {
-          this.pwdType = "password";
-        }
-      },*/
       handleLogin() {
         this.$refs.loginForm.validate(valid => {
           if (valid) {
@@ -100,27 +116,3 @@
     }
   };
 </script>
-
-<style scoped>
-  .login-form-layout {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 360px;
-    margin: 140px auto;
-    border-top: 10px solid #409eff;
-  }
-
-  .login-title {
-    text-align: center;
-  }
-
-  .login-center-layout {
-    background: #409eff;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    margin-top: 200px;
-  }
-</style>
